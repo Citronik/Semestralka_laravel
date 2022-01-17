@@ -5259,15 +5259,6 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var about = new Vue({
-  el: '#page',
-  data: {
-    nazov: 'About us',
-    image: '/img/Aboutus.png'
-  },
-  methods: {}
-});
-
 checkDivForLogged = function checkDivForLogged() {
   var user;
 
@@ -5282,6 +5273,26 @@ checkDivForLogged = function checkDivForLogged() {
   for (var i = 0; i < elements.length; i++) {
     elements[i].style.display = "none";
   }
+};
+
+var lastUrl;
+
+loadDoc = function loadDoc(url) {
+  if (lastUrl && url === lastUrl) {
+    return;
+  }
+
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("page").innerHTML = this.responseText;
+    }
+  };
+
+  xhttp.open("GET", url, true);
+  xhttp.send();
+  lastUrl = url;
 };
 
 /***/ }),

@@ -17576,5 +17576,11 @@ p.mini {
 .bi-file-plus:hover {
     opacity: 1;
 }
+.nav-submenu {
+    height: 50px !important;
+    width: auto !important;
+    padding: 5px 5px;
+}
+
 
 

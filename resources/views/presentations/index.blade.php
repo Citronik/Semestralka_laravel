@@ -33,7 +33,7 @@
                 <div class="col-lg-3 p-3 text-black bg-light">
                     <div class="header zaujimavsie">
                         <div class="img-container justify-content-end">
-                            <a href="{{ route('presentation.update-form') }}">
+                            <a href="{{ route('presentations.create') }}">
                                 <i class="bi bi-file-plus display-1 justify-content-center"></i>
                             </a>
                         </div>

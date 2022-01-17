@@ -15,7 +15,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        return view('image');
     }
 
     /**
@@ -36,7 +36,24 @@ class PhotoController extends Controller
      */
     public function store(StorePhotoRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+            'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+
+        ]);
+
+        $name = $request->file('photo')->getClientOriginalName();
+
+        $path = $request->file('photo')->store('public/img');
+
+
+        $save = new Photo;
+
+        $save->name = $name;
+        $save->path = $path;
+
+        $save->save();
+
+        return redirect('upload-image')->with('status', 'Image Has been uploaded');
     }
 
     /**

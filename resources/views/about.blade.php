@@ -2,6 +2,30 @@
 
 @section('content')
 @include('includes.status')
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-center"
+     style="opacity: 1; padding: 10px 10px; z-index: 9; position: inherit; margin-bottom: 5px;margin-top: 5px">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" style="justify-content: center; " id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="">
+                    <a class="nav-link" ><button id="btn-about" onclick="event.preventDefault();
+                        loadDoc('{{ route('ajax.get', ['id' => 'about_content']) }}');" type="button"
+                                                 class="btn btn-primary btn-small btn-nav">About us</button></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ><button id="btn-history" onclick="event.preventDefault();
+                        loadDoc('{{ route('ajax.get', ['id' => 'history_content']) }}');" type="button"
+                                                 class="btn btn-primary btn-small btn-nav">History</button></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid mt-1 bg-light" id="page">
     <div class="header bg-light">
         <h1 class="onas">About us</h1>
@@ -19,7 +43,7 @@
         <div class="row">
             <div class="col-md-6 p-3 text-black bg-light">
                 <div class="header">
-                    <img v-bind:src="image" width="720" height="720" alt="Security fabric">
+                    <img src="/img/Aboutus.png" width="720" height="720" alt="Security fabric">
                 </div>
             </div>
             <div class="col-xl-6 p-3 text-black bg-light stred">

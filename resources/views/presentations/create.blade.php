@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Add Presentation') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('presentation.update-form') }}">
+                        <form method="POST" action="{{ route('presentations.create') }}">
                             @csrf
 
                             <div class="row mb-3">
@@ -39,12 +39,23 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="name">Category</label>
+                                <select class="form-control">
+                                    @foreach($presentations as $presentation)
+                                        <option value="{{$presentation->id}}">{{$presentation->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+<!--
+
                             <div class="row mb-4">
                                     <div class="form-group">
                                         <label for="FileInput">Your Presentation</label>
                                         <input type="file" id="file" class="form-control-file @error('file') is-invalid @enderror" id="FileInput">
                                     </div>
                             </div>
+-->
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">

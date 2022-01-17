@@ -91,14 +91,16 @@
         </div>
     </div>
 </div>
+<div class="container" style="z-index: 5; position: relative; ">
 
+</div>
 <footer class="footer">
     <p>Fortinet</p>
 <!--    <div class="C805-Footer-Text">-->
         <div class="row">
                 <div class="col-md-3">
-                    <div id="over" class="img-container" style="align-items: center; justify-content: center;">
-                        <img class="img-fluid" src="/img/fortilogo.jpg" alt="Fortinet Logo">
+                    <div id="logo" class="img-container" style="align-items: center; justify-content: center;" onmouseenter="event.preventDefault(); ">
+                        <img id="logo" class="img-fluid" src="img/fortilogo.jpg" alt="Fortinet Logo">
                     </div>
                 </div>
                 <div class="col-md-6">

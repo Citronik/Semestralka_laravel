@@ -1,16 +1,5 @@
 require('./bootstrap');
 
-var about = new Vue({
-    el: '#page',
-    data: {
-        nazov: 'About us',
-        image: '/img/Aboutus.png',
-    },
-    methods: {
-
-    }
-})
-
 checkDivForLogged = function() {
     var user;
     if (AuthUser != ""){
@@ -23,3 +12,23 @@ checkDivForLogged = function() {
         elements[i].style.display = "none";
     }
 }
+
+var lastUrl;
+
+loadDoc = function(url) {
+    if(lastUrl && url === lastUrl) {
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("page").innerHTML =
+                this.responseText;
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+    lastUrl = url;
+}
+

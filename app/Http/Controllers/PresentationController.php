@@ -27,7 +27,8 @@ class PresentationController extends Controller
      */
     public function create()
     {
-        return view('presentations.create');
+        $presentations = Presentation::all(['id','name']);
+        return view('presentations.create',compact('presentations'));
     }
 
     /**

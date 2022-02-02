@@ -6,9 +6,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Add Presentation') }}</div>
-
                     <div class="card-body">
-                        <form method="POST" action="{{ route('presentations.create') }}">
+                        <form method="POST" action="{{ route('presentations.store') }}">
                             @csrf
 
                             <div class="row mb-3">
@@ -29,7 +28,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="text" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}">
+                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -39,27 +38,36 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="name">Category</label>
-                                <select class="form-control">
-                                    @foreach($presentations as $presentation)
-                                        <option value="{{$presentation->id}}">{{$presentation->name}}</option>
-                                    @endforeach
-                                </select>
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-4 col-form-label text-md-end">Presentations</label>
+                                <div class="col-md-6">
+                                    <select name="photo" id="photo" class="form-control">
+                                        @foreach($presentations as $presentation)
+                                            <option value="{{$presentation->id}}">{{$presentation->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 <!--
-
-                            <div class="row mb-4">
+                            <div class="row mb-3">
+                                <div class="col-md-4")>
                                     <div class="form-group">
                                         <label for="FileInput">Your Presentation</label>
                                         <input type="file" id="file" class="form-control-file @error('file') is-invalid @enderror" id="FileInput">
                                     </div>
+                                </div>
+                                <div class="col-md-4")>
+                                    <div class="form-group">
+                                        <label for="FileInput">Title picture</label>
+                                        <input type="file" id="image" class="form-control-file @error('file') is-invalid @enderror" id="FileInput">
+                                    </div>
+                                </div>
                             </div>
 -->
 
-                            <div class="row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                            <div class="row mb-6">
+                                <div class="col-md-5 offset-md-5">
+                                    <button type="submit" class="btn btn-primary" style="margin-top: 10px">
                                         {{ __('Add Presentation') }}
                                     </button>
                                 </div>

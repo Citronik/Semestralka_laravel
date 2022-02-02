@@ -39,9 +39,14 @@ class PresentationController extends Controller
      */
     public function store(StorePresentationRequest $request)
     {
-        return Presentation::create([
-            $request->toArray()
-        ]);
+
+        $presentation = new Presentation;
+        $presentation->user_id = $request->user()->id;
+        $presentation->photo_id = $request->get('photo');
+        $presentation->name = $request->name;
+        $presentation->description = $request->description;
+        $presentation->save();
+        return redirect()->back()->with('status', 'Presentation was updated.');
     }
 
     /**
@@ -63,7 +68,8 @@ class PresentationController extends Controller
      */
     public function edit(Presentation $presentation)
     {
-        return view('presentations.edit', ['presentation' => $presentation]);
+        return view('presentations.update', [
+            'presentation' => $presentation]);
     }
 
     /**
@@ -90,4 +96,5 @@ class PresentationController extends Controller
         $presentation->delete();
         return redirect()->back()->with('status', 'Presentation was deleted.');
     }
+
 }

@@ -100,7 +100,7 @@
         <div class="row">
                 <div class="col-md-3">
                     <div id="logo" class="img-container" style="align-items: center; justify-content: center;" onmouseenter="event.preventDefault(); ">
-                        <img id="logo" class="img-fluid" src="img/fortilogo.jpg" alt="Fortinet Logo">
+                        <img id="logo" class="img-fluid" src="/img/fortilogo.jpg" alt="Fortinet Logo">
                     </div>
                 </div>
                 <div class="col-md-6">

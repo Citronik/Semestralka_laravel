@@ -1,21 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <div class="row justify-content-center">
+        @include('includes.presentation', ['presentations.show' => $presentation])
+    </div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Change personal info') }}</div>
-
+                    <div class="card-header">{{ __('Change Presentation') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.update') }}">
+                        <form method="POST" action="{{ route('presentations.update', ['presentation' => $presentation->id ]) }}">
+                            @method('patch')
                             @csrf
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $presentation->name }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -26,12 +31,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
+                                <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
+                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $presentation->description }}" required autocomplete="description" autofocus>
 
-                                    @error('email')
+                                    @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -40,12 +45,11 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
+                                <label for="FileInput">Your Presentation</label>
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input name="foto" type="file" id="file" class="form-control-file @error('file') is-invalid @enderror" id="FileInput">
 
-                                    @error('password')
+                                    @error('file')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -56,7 +60,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
+                                        {{ __('Save changes') }}
                                     </button>
                                 </div>
                             </div>

@@ -27,7 +27,7 @@ Route::post('/users/update', [App\Http\Controllers\UserController::class, 'updat
 
 Route::get('/users/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
-//Route::get('/presentations/create', [App\Http\Controllers\PresentationController::class, 'create'])->name('presentation.update-form');
+Route::post('/presentations', [App\Http\Controllers\PresentationController::class, 'store'])->name('presentations.store');
 
 Route::get('/getView/{id}', [App\Http\Controllers\AjaxController::class, 'getView'])->name('ajax.get');
 

@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Change Presentation') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('presentations.update', ['presentation' => $presentation->id ]) }}">
+                        <form method="POST" action="{{ route('presentations.update', ['presentation' => $presentation->id ]) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
 
@@ -44,18 +44,18 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="FileInput">Your Presentation</label>
-                                <div class="col-md-6">
-                                    <input name="foto" type="file" id="file" class="form-control-file @error('file') is-invalid @enderror" id="FileInput">
+                                <div class="col-md-4")>
+                                    <div class="form-group">
+                                        <label for="file">Title picture</label>
+                                        <input type="file" name="presentation_photo" id="presentation_photo" class="form-control @error('presentation_photo') is-invalid @enderror">
 
-                                    @error('file')
-                                    <span class="invalid-feedback" role="alert">
+                                        @error('presentation_photo')
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">

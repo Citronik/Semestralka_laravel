@@ -135,4 +135,21 @@ p.mini {
     padding: 5px 5px;
 }
 
+#edit {
+    position: absolute !important;
+    top: 2px;
+    left: 2px;
+    background: green !important;
+    justify-content: right;
+}
+
+#delete {
+    position: absolute !important;
+    top: 2px;
+    right: 2px;
+    background: red !important;
+    justify-content: left;
+}
+
+
 

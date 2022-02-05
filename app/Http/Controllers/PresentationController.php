@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePresentationRequest;
 use App\Http\Requests\UpdatePresentationRequest;
+use App\Models\File;
 use App\Models\Photo;
 use App\Models\Presentation;
-use Faker\Core\File;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 
 class PresentationController extends Controller
 {
@@ -32,11 +32,8 @@ class PresentationController extends Controller
      */
     public function create()
     {
-        $photos = Photo::all(['id','filename']);
-        //$presentations = Presentation::all(['id','name']);
-        return view('presentations.create'/*,compact('presentations')*/, compact('photos')
-
-        );
+        $tags = Tag::all(['id', 'name']);
+        return view('presentations.create', compact('tags'));
     }
 
     /**
@@ -48,21 +45,34 @@ class PresentationController extends Controller
     public function store(StorePresentationRequest $request)
     {
         $photo = new Photo;
-        $file = $request->file('presentation_photo');
-        //dd($file);
-        $photo->filename = time().$file->getClientOriginalName();
-        //$file->storeAs('public/img',$photo->filename);
-        //Storage::disk('public')->put('img/' .$photo->filename, $file);
-        $file->move(base_path('/public/img'),$photo->filename);
+        $photoFile = $request->file('presentation_photo');
+        $photo->filename = time().$photoFile->getClientOriginalName();
+        Storage::disk('public')->putFileAs(
+            'images', $photoFile, $photo->filename
+        );
+
+        if ($request->hasFile('presentation_file')) {
+            $presentationFile = $request->file('presentation_file');
+            $file = new File();
+            $file->filename = time().$presentationFile->getClientOriginalName();
+            $file->downloadsCount = 0;
+            Storage::disk('public')->putFileAs(
+                'files', $presentationFile, $file->filename
+            );
+            $file->save();
+        }
+
         if ($photo->save()) {
             $presentation = new Presentation;
             $presentation->user_id = $request->user()->id;
             $presentation->photo_id = $photo->id;
             $presentation->name = $request->name;
             $presentation->description = $request->description;
+            $presentation->tags()->sync($request->tags);
             $presentation->save();
             return redirect()->back()->with('status', 'Presentation was updated.');
         }
+
         return redirect()->back()->with('status', 'Presentation was not updated.');
     }
 
@@ -85,8 +95,11 @@ class PresentationController extends Controller
      */
     public function edit(Presentation $presentation)
     {
+        $tags = Tag::all(['id', 'name']);
         return view('presentations.update', [
-            'presentation' => $presentation]);
+            'presentation' => $presentation,
+        'tags' => $tags
+        ]);
     }
 
     /**
@@ -99,15 +112,36 @@ class PresentationController extends Controller
     public function update(UpdatePresentationRequest $request, Presentation $presentation)
     {
         $presentation->update($request->toArray());
+        $presentation->tags()->sync($request->tags);
+
+        if ($request->hasFile('presentation_file')) {
+            $presentationFile = $request->file('presentation_file');
+
+            if($presentation->file) {
+                $file = $presentation->file;
+                Storage::disk('public')->delete('images/'.$file->filename);
+            } else {
+                $file = new File();
+            }
+
+            $file->filename = time().$presentationFile->getClientOriginalName();
+            $file->downloadsCount = 0;
+            Storage::disk('public')->putFileAs(
+                'files', $presentationFile, $file->filename
+            );
+            $file->save();
+        }
+
         if ($request->hasFile('presentation_photo')) {
-            $file = $request->file('presentation_photo');
-            $photo = $presentation->photo();
-            $oldfoto = $photo->get();
-            //dd($oldfoto);
-            $filename = time().$file->getClientOriginalName();
+            $photoFile = $request->file('presentation_photo');
+            $photo = $presentation->photo;
+            $oldPhotoFilename = $photo->filename;
+            $filename = time().$photoFile->getClientOriginalName();
             $photo->update(['filename' => $filename]);
-            $file->move(base_path('/public/img'),$filename);
-            Storage::delete('public/img/'.$oldfoto->filename);
+            Storage::disk('public')->putFileAs(
+                'images', $photoFile, $filename
+            );
+            Storage::disk('public')->delete('images/'.$oldPhotoFilename);
         }
         return redirect()->back()->with('status', 'Presentation was updated.');
     }
@@ -118,9 +152,16 @@ class PresentationController extends Controller
      * @param  \App\Models\Presentation  $presentation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presentation $presentation)
+    public function destroy($presentation)
     {
-        $presentation->delete();
+        $presentationModel = Presentation::findOrFail($presentation);
+
+        $photo = $presentationModel->photo;
+        $filename = $photo->filename;
+        Storage::disk('public')->delete('images/'.$filename);
+        $photo->delete();
+        $presentationModel->delete();
+
         return redirect()->back()->with('status', 'Presentation was deleted.');
     }
 

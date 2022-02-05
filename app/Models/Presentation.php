@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presentation extends Model
 {
-    use HasFactory;
+    protected $with = ['photo', 'file', 'tags'];
 
     protected $fillable = [
         'user_id',
@@ -22,5 +22,15 @@ class Presentation extends Model
     public function photo()
     {
         return $this->belongsTo('App\Models\Photo');
+    }
+
+    public function file()
+    {
+        return $this->belongsTo('App\Models\File');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag', 'presentation_tags');
     }
 }

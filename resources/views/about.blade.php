@@ -12,13 +12,16 @@
         <div class="collapse navbar-collapse" style="justify-content: center; " id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item" style="">
-                    <a class="nav-link" ><button id="btn-about" onclick="event.preventDefault();
-                        loadDoc('{{ route('ajax.get', ['id' => 'about_content']) }}');" type="button"
-                                                 class="btn btn-primary btn-small btn-nav">About us</button></a>
+                    <a class="nav-link" >
+                        <button id="btn-about" onclick="event.preventDefault();
+                        loadDoc('{{ route('ajax.getView', ['id' => 'about_content']) }}');" type="button"
+                                                 class="btn btn-primary btn-small btn-nav">About us
+                        </button>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ><button id="btn-history" onclick="event.preventDefault();
-                        loadDoc('{{ route('ajax.get', ['id' => 'history_content']) }}');" type="button"
+                        loadDoc('{{ route('ajax.getView', ['id' => 'history_content']) }}');" type="button"
                                                  class="btn btn-primary btn-small btn-nav">History</button></a>
                 </li>
             </ul>

@@ -29,5 +29,9 @@ Route::get('/users/delete', [App\Http\Controllers\UserController::class, 'delete
 
 Route::post('/presentations', [App\Http\Controllers\PresentationController::class, 'store'])->name('presentations.store');
 
-Route::get('/getView/{id}', [App\Http\Controllers\AjaxController::class, 'getView'])->name('ajax.get');
+Route::get('/getView/{id}', [App\Http\Controllers\AjaxController::class, 'getView'])->name('ajax.getView');
+
+Route::get('/getPresentationButtons/{id}', [App\Http\Controllers\AjaxController::class, 'getPresentationButtons'])->name('ajax.getPresentationButtons');
+
+Route::get('/files/{id}', [App\Http\Controllers\FileController::class, 'show'])->name('files.show');
 

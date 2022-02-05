@@ -57,6 +57,23 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-8">
+                                    <div class="col-md-4")>
+                                        <div class="form-group">
+                                            <select name="tags[]" class="selectpicker" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('tags')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -70,4 +87,11 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            var tags = {!! $presentation->tags->map->id!!};
+            $('.selectpicker').selectpicker('val', tags.map(String));
+            $('.selectpicker').selectpicker('render');
+        });
+    </script>
 @endsection

@@ -1,8 +1,14 @@
+window.$ = window.jQuery = require('jquery');
+
 window._ = require('lodash');
 
+require('popper.js')
+
 try {
-    require('bootstrap');
+    window.bootstrap = require('bootstrap');
 } catch (e) {}
+
+require('bootstrap-select');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

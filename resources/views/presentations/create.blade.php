@@ -13,12 +13,12 @@
                         <ul class="navbar-nav">
                             <li class="nav-item" style="">
                                 <a class="nav-link" ><button id="btn-about" onclick="event.preventDefault();
-                                        loadDoc('{{ route('ajax.get', ['id' => 'create_presentation_content']) }}');" type="button"
+                                        loadDoc('{{ route('ajax.getView', ['id' => 'create_presentation_content']) }}');" type="button"
                                                              class="btn btn-primary btn-small btn-nav">Add presentation</button></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" ><button id="btn-history" onclick="event.preventDefault();
-                                        loadDoc('{{ route('ajax.get', ['id' => 'create_photo_content']) }}');" type="button"
+                                        loadDoc('{{ route('ajax.getView', ['id' => 'create_photo_content']) }}');" type="button"
                                                              class="btn btn-primary btn-small btn-nav">Add photo</button></a>
                             </li>
                         </ul>
@@ -71,6 +71,34 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-8">
+                                <div class="col-md-4")>
+                                    <div class="form-group">
+                                        <label for="file">File</label>
+                                        <input type="file" name="presentation_photo" id="presentation_file" class="form-control @error('presentation_photo') is-invalid @enderror">
+
+                                        @error('presentation_photo')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-8">
+                                <div class="col-md-4")>
+                                    <div class="form-group">
+                                        <select name="tags[]" class="selectpicker" multiple>
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

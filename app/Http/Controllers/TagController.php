@@ -35,7 +35,10 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag();
+        $tag->name = $request->name;
+        $tag->save();
+        return redirect()->back()->with('status', 'Tag was updated.');
     }
 
     /**

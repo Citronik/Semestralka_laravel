@@ -12,6 +12,7 @@ class Presentation extends Model
     protected $fillable = [
         'user_id',
         'photo_id',
+        'file_id',
         'name',
         'description',
     ];

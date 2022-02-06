@@ -3,15 +3,16 @@ body {
     overflow-x: hidden;
 }
 .navbar {
-    background-color: darkgray;
+    background-color: #363636 !important;
     align-content: center;
     position: sticky;
     top: 0;
-    opacity: 0.6;
+
     z-index: 10;
 }
 .navbar:hover {
     opacity: 1;
+    background-color: black !important;
 }
 
 img {
@@ -150,6 +151,37 @@ p.mini {
     background: red !important;
     justify-content: left;
 }
+
+#selectpicker {
+    position: relative;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center !important;
+    width: auto !important;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+#fileloading {
+    width: auto !important;
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+#btn {
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  #btn:hover {
+    background-color: DodgerBlue !important;
+  }
 
 
 

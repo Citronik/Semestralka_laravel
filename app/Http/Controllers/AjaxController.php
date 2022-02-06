@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -16,7 +17,9 @@ class AjaxController extends Controller
     {
         if(view()->exists('content.' . $id)) {
             $photos = Photo::all(['id','filename']);
-            return view('content.' . $id, [compact('photos'), ])->render();
+            $tags = Tag::all(['id', 'name']);
+            //dd($tags);
+            return view('content.' . $id, compact('tags'))->render();
         }
         abort(404);
     }

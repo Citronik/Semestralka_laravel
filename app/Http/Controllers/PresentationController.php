@@ -130,6 +130,7 @@ class PresentationController extends Controller
                 'files', $presentationFile, $file->filename
             );
             $file->save();
+            $presentation->file_id = $file->id;
         }
 
         if ($request->hasFile('presentation_photo')) {
@@ -143,6 +144,7 @@ class PresentationController extends Controller
             );
             Storage::disk('public')->delete('images/'.$oldPhotoFilename);
         }
+        $presentation->save();
         return redirect()->back()->with('status', 'Presentation was updated.');
     }
 

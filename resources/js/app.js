@@ -1,5 +1,6 @@
 require('./bootstrap');
 const path  = require("path");
+const { timeouts } = require('retry');
 
 checkDivForLogged = function() {
     var user;
@@ -14,8 +15,11 @@ checkDivForLogged = function() {
     }
 }
 
-var lastUrl;
+timeout = function(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
 
+var lastUrl;
 loadDoc = function(url) {
     if(lastUrl && url === lastUrl) {
         return;
@@ -31,8 +35,11 @@ loadDoc = function(url) {
     xhttp.open("GET", url, true);
     xhttp.send();
     lastUrl = url;
+    setTimeout(function(){
+        $('.selectpicker').selectpicker(["reload"]);
+        console.log("after timeout");
+    }, 1.0*50);
 }
-
 
 showButtons = function (url, id) {
     var element = document.getElementById(id);
@@ -55,3 +62,6 @@ showButtons = function (url, id) {
 hideButtons =function (id) {
     document.getElementById(id).style.visibility="hidden";
 }
+
+
+

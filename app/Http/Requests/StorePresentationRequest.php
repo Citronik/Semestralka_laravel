@@ -27,7 +27,7 @@ class StorePresentationRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
             'presentation_photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'presentation_file' => 'file|mimes:ppt,pptx|max:2048',
+            'presentation_file' => 'file|mimes:ppt,pptx,pdf|max:32768',
             'tags' => 'array',
             'tags.*' => 'required|integer|exists:tags,id'
         ];

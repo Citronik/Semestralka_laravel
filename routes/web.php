@@ -21,6 +21,8 @@ Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->nam
 
 Route::resource('presentations', \App\Http\Controllers\PresentationController::class);
 
+Route::resource('tags', \App\Http\Controllers\TagController::class);
+
 Route::get('/users/update', [App\Http\Controllers\UserController::class, 'updateForm'])->name('users.update-form');
 
 Route::post('/users/update', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');

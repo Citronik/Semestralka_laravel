@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Change Presentation') }}</div>
-                    <div class="card-body">
+                    <div class="card-body" style="justify-content: center">
                         <form method="POST" action="{{ route('presentations.update', ['presentation' => $presentation->id ]) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
@@ -44,37 +44,49 @@
                                 </div>
                             </div>
 
-                                <div class="col-md-4")>
-                                    <div class="form-group">
-                                        <label for="file">Title picture</label>
-                                        <input type="file" name="presentation_photo" id="presentation_photo" class="form-control @error('presentation_photo') is-invalid @enderror">
+                            <div class="row col-md-10" style="justify-content: center" )>
+                                <div class="form-group">
+                                    <label for="file">Title picture</label>
+                                    <input type="file" name="presentation_photo" id="presentation_photo" class="form-control @error('presentation_photo') is-invalid @enderror">
 
-                                        @error('presentation_photo')
+                                    @error('presentation_photo')
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row col-md-10")>
+                                <div class="form-group">
+                                    <label for="file">Presentation file</label>
+                                    <input type="file" name="presentation_file" id="presentation_file" class="form-control @error('presentation_file') is-invalid @enderror">
+
+                                    @error('presentation_file')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mb-8">
+                                <div id="selectpicker" class="col-md-4" style="position: relative">
+                                    <div class="form-group">
+                                        <select name="tags[]" class="selectpicker" multiple>
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('tags')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row mb-8">
-                                    <div class="col-md-4")>
-                                        <div class="form-group">
-                                            <select name="tags[]" class="selectpicker" multiple>
-                                                @foreach($tags as $tag)
-                                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('tags')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                            <div class="row mb-0">
+                            <div class="row mb-0"style="margin-top: 10px">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Save changes') }}

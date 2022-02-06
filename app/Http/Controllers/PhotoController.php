@@ -44,10 +44,7 @@ class PhotoController extends Controller
         $name = $request->file('photo')->getClientOriginalName();
 
         $path = $request->file('photo')->store('public/img');
-
-
         $save = new Photo;
-
         $save->name = $name;
         $save->path = $path;
 

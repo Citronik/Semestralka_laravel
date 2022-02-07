@@ -7,12 +7,17 @@ body {
     align-content: center;
     position: sticky;
     top: 0;
-
+    height: 70px;
     z-index: 10;
 }
 .navbar:hover {
     opacity: 1;
     background-color: black !important;
+}
+
+.active:hover {
+    color: white !important;
+    border: white !important;
 }
 
 img {
@@ -66,6 +71,43 @@ div.zaujimavsie .bi-tools {
     top:5px;
     left:5px;
 }
+
+#btn1 {
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    background-color: gray !important;
+    color: black !important;
+    font-size: medium !important;
+    height: 40px;
+    margin-left: 2px !important;
+  }
+
+  #btn1:hover {
+    background-color: DodgerBlue !important;
+  }
+
+  #btn2:hover {
+    background-color: DodgerBlue !important;
+  }
+  #btn2 {
+    margin-bottom: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    background-color: gray !important;
+    color: black !important;
+    font-size: medium !important;
+    height: 40px;
+    margin-left: 2px !important;
+  }
 
 footer {
     background-color: black;
@@ -174,9 +216,15 @@ p.mini {
     margin-bottom: 20px;
     border: none;
     color: white;
-    padding: 12px 30px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 18px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    background-color: gray !important;
+    color: black !important;
+    font-size: medium !important;
+    height: 40px;
+    margin-left: 2px !important;
   }
 
   #btn:hover {
@@ -187,6 +235,7 @@ p.mini {
     max-height: 768px;
     min-width: auto;
   }
+
 
 
 

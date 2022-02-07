@@ -29,7 +29,7 @@
 @auth
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
 @endauth
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-end">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-end">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">Fortinet</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -51,13 +51,13 @@
                 <script>checkDivForLogged()</script>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">
-                            <button type="button" class="btn btn-primary btn-small btn-nav">Sign in</button>
+                        <a class="btn btn-secondary btn active" id="btn" style="margin-bottom: 0px !important" href="{{ route('login') }}">
+                            Sign in
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">
-                            <button type="button" class="btn btn-primary btn-small btn-nav">Sign up</button>
+                        <a class="btn btn-secondary btn active" id="btn1" style="margin-bottom: 0px !important" href="{{ route('register') }}">
+                            Sign up
                         </a>
                     </li>
                 </ul>
@@ -65,18 +65,18 @@
                 <script>checkDivForLogged()</script>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="button nav-link " href="{{ route('users.update-form') }}">
-                            <button type="button" class="btn btn-primary btn-small btn-nav">Change personal info</button>
+                        <a class="btn btn-secondary btn active" id="btn" style="margin-bottom: 0px !important" href="{{ route('users.update-form') }}">
+                            Change personal info
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.update') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <button type="button" class="btn btn-primary btn-small btn-nav">Sign out</button>
+                        <a class="btn btn-secondary btn active" id="btn1" style="margin-bottom: 0px !important" href="{{ route('users.update') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Sign out
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.delete') }}">
-                            <button type="button" class="btn btn-primary btn-small btn-nav"><i class="bi bi-x-circle-fill"></i></button>
+                        <a class="btn btn-secondary btn active" id="btn2" style="margin-bottom: 0px !important" href="{{ route('users.delete') }}">
+                            <i class="bi bi-x-circle-fill"></i>
                         </a>
                     </li>
                 </ul>

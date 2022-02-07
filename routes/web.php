@@ -35,5 +35,7 @@ Route::get('/getView/{id}', [App\Http\Controllers\AjaxController::class, 'getVie
 
 Route::get('/getPresentationButtons/{id}', [App\Http\Controllers\AjaxController::class, 'getPresentationButtons'])->name('ajax.getPresentationButtons');
 
+Route::get('/getEditTag/{id}', [App\Http\Controllers\AjaxController::class, 'getEditTag'])->name('ajax.getEditTag');
+
 Route::get('/files/{id}', [App\Http\Controllers\FileController::class, 'show'])->name('files.show');
 

@@ -163,6 +163,7 @@ class PresentationController extends Controller
         Storage::disk('public')->delete('images/'.$filename);
         $photo->delete();
         $presentationModel->delete();
+        $presentation->tags;
 
         return redirect()->back()->with('status', 'Presentation was deleted.');
     }

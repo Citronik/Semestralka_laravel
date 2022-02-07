@@ -74,7 +74,7 @@
         </div>
 
         <div class="row mb-6">
-            <div class="col-md-5 offset-md-5">
+            <div class="col-md-5 offset-md-5" style="justify-content: center; text-align: center;">
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px">
                     {{ __('Add Presentation') }}
                 </button>

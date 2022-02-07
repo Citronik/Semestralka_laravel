@@ -30,17 +30,7 @@
 <!--                        <div class="row">-->
                 @endif
            @endforeach
-                {{--
-                <div class="col-lg-3 p-3 text-black bg-light">
-                    <div class="header zaujimavsie">
-                        <div class="img-container justify-content-end">
-                            <a href="{{ route('presentations.create') }}">
-                                <i class="bi bi-file-plus display-1 justify-content-center"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
---}}
+
                     <div class="card justify-content-center" style="width: 18rem">
                         <a href="{{ route('presentations.create') }}" class="btn">
                             <i class="bi bi-file-plus display-1 justify-content-center"></i>

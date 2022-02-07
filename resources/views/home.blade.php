@@ -2,19 +2,20 @@
 
 @section('content')
 @include('includes.status')
+
 <div class="container-fluid mt-1 bg-light">
     <div class="header bg-light">
         <h1>Next-Generation Firewall</h1>
     </div>
     <div class="row">
-        <div class="col-xl-4 p-3 text-black bg-light">
+        <div class="col-xl-3 p-3 text-black bg-light">
             <div class="header">
                 <h1>Overview</h1>
                 <p>FortiGate NGFWs delivers industry leading enterprise security for any edge at any scale with full visibility, and threat protection.
                     Organizations can weave security deep into the Hybrid IT architecture, and build Security-Driven Networks to:</p>
             </div>
         </div>
-        <div class="col-xl-4 p-3 text-white bg-light">
+        <div class="col-xl-3 p-3 text-white bg-light">
             <table class="table table-hover">
                 <tbody>
                 <tr>
@@ -36,8 +37,33 @@
                 </tr>
             </table>
         </div>
-        <div class="col-xl-4 p-3 bg-light text-white">
-            <img src="/img/forti-NGFW.jpg" width="800" height="418" alt="forti-NGFW">
+        <div class="col-xl-6 p-3 bg-light text-white">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 340px !important;">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/img/forti-NGFW.jpg" class="d-block w-100 img-fluid" alt="forti-NGFW">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/img/thumb.jpeg" class="d-block w-100 img-fluid" alt="thumb">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/img/productivity.jpg" class="d-block w-100 img-fluid" alt="productivity">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" style="opacity: 0.45" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" style="opacity: 0.45" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
         </div>
     </div>
     <div class="container mt-3">
@@ -52,7 +78,7 @@
                     <div class="card-body">
                         <div class="row okraje">
                             <div class="col-md-6 items">
-                                <img src="/img/fortigate-1800f.jpg" alt="Fortigate-1800f"  width=auto height=auto>
+                                <img src="/img/fortigate-1800f.jpg" alt="Fortigate-1800f">
                             </div>
                             <div class="col-md-6">
                                 <h2>FortiGate 1800F</h2>
@@ -62,7 +88,7 @@
                         </div>
                         <div class="row okraje">
                             <div class="col-md-6 items">
-                                <img src="/img/Fortigate2600F.jpg" alt="Fortigate-2600f"  width=auto height=auto>
+                                <img src="/img/Fortigate2600F.jpg" alt="Fortigate-2600f">
                             </div>
                             <div class="col-md-6">
                                 <h2>FortiGate 2600F</h2>
@@ -71,7 +97,7 @@
                         </div>
                         <div class="row okraje">
                             <div class="col-md-6">
-                                <img src="/img/FortiGate4200F.jpg" alt="FortiGate 4200F" width=auto height=auto>
+                                <img src="/img/FortiGate4200F.jpg" alt="FortiGate 4200F">
                             </div>
                             <div class="col-md-6">
                                 <h2>FortiGate 4200F</h2>
@@ -82,7 +108,7 @@
                         </div>
                         <div class="row okraje">
                             <div class="col-md-6">
-                                <img src="/img/FortiGate4400F.jpg" alt="FortiGate 4400F" width=auto height=auto>
+                                <img src="/img/FortiGate4400F.jpg" alt="FortiGate 4400F">
                             </div>
                             <div class="col-md-6">
                                 <h2>FortiGate 4400F</h2>
@@ -95,7 +121,7 @@
                         </div>
                         <div class="row okraje">
                             <div class="col-md-6 ">
-                                <img src="/img/FortiGate7121F.jpg" alt="FortiGate 7121F" width=auto height=auto>
+                                <img src="/img/FortiGate7121F.jpg" alt="FortiGate 7121F">
                             </div>
                             <div class="col-md-6 align-content-center">
                                 <h2>FortiGate 4400F</h2>
@@ -130,5 +156,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

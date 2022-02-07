@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Change Presentation') }}</div>
-                    <div class="card-body" style="justify-content: center">
+                    <div class="card-body" style="justify-content: center; text-align: center">
                         <form method="POST" action="{{ route('presentations.update', ['presentation' => $presentation->id ]) }}" enctype="multipart/form-data">
                             @method('patch')
                             @csrf
@@ -34,7 +34,7 @@
                                 <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $presentation->description }}" required autocomplete="description" autofocus>
+                                    <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $presentation->description }}">{{ $presentation->description }}</textarea>
 
                                     @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-0"style="margin-top: 10px">
+                            <div class="row mb-0"style="margin-top: 10px justify-content: center; text-align: center;">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Save changes') }}

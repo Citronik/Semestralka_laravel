@@ -37,7 +37,6 @@ loadDoc = function(url) {
     lastUrl = url;
     setTimeout(function(){
         $('.selectpicker').selectpicker(["reload"]);
-        console.log("after timeout");
     }, 1.0*50);
 }
 
@@ -63,5 +62,7 @@ hideButtons =function (id) {
     document.getElementById(id).style.visibility="hidden";
 }
 
+warning = function(string) {
 
+}
 

@@ -17,6 +17,13 @@
                       loadDoc('{{ route('ajax.getView', ['id' => 'create_tag_content']) }}');">
                         {{ __('Add Tag') }}
                     </a>
+                    <a class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                      role="tab" aria-controls="nav-contact" aria-selected="false" href=""
+                      onclick="event.preventDefault();
+                      loadDoc('{{ route('ajax.getView', ['id' => 'show_tag_content']) }}');">
+                        {{ __('Edit Tags') }}
+                    </a>
+
                     </div>
                   </nav>
                 <div id="page" class="card">
@@ -94,7 +101,7 @@
                             </div>
 
                             <div class="row mb-6">
-                                <div class="col-md-5 offset-md-5">
+                                <div class="col-md-5 offset-md-5" style="justify-content: center; text-align: center;">
                                     <button type="submit" class="btn btn-primary" style="margin-top: 10px">
                                         {{ __('Add Presentation') }}
                                     </button>

@@ -30,22 +30,29 @@
                         </ul>
                         <p class="card-text"><small class="text-muted">Last updated {{$presentation->updated_at}}</small></p>
                     </div>
-                    <a href=""><button class="btn btn-sm" id="btn" ><i class="bi bi-file-earmark-arrow-down"></i> Download</button></a>
+                    @if ($presentation->file)
+                    <a href="{{ route('files.show', ['id' => $presentation->file->id ]) }}"><button class="btn btn-sm" id="btn" ><i class="bi bi-file-earmark-arrow-down"></i> Download</button></a>
+                    @else
+                        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="We currently working on it!">
+                      <i class="bi bi-file-earmark-arrow-down"></i> Download</button>
+                    @endif
                 </div>
                 </div>
               </div>
-
-
             <div class="container-fluid anonym">
                 <p class="align-content-center ">To see all of our presentations log in or create account
                 </p>
             </div>
             @if(!Auth::check())
-                <script>checkDivForLogged()</script>
+                <script>checkDivForLogged(); $('.btn').popover();</script>
             @else
                 <script>checkDivForLogged()</script>
             @endif
         </div>
     </div>
     </div>
+    <script>
+    setTimeout(function(){
+        $('.btn').popover();
+    }, 1.0*50);</script>
 @endsection

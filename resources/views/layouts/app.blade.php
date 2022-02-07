@@ -65,7 +65,7 @@
                 <script>checkDivForLogged()</script>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.update-form') }}">
+                        <a class="button nav-link " href="{{ route('users.update-form') }}">
                             <button type="button" class="btn btn-primary btn-small btn-nav">Change personal info</button>
                         </a>
                     </li>
@@ -100,7 +100,7 @@
         <div class="row">
                 <div class="col-md-3">
                     <div id="logo" class="img-container" style="align-items: center; justify-content: center;" onmouseenter="event.preventDefault(); ">
-                        <img id="logo" class="img-fluid" src="/img/fortilogo.jpg" alt="Fortinet Logo">
+                        <img class="img-fluid" src="/img/fortilogo.jpg" alt="Fortinet Logo">
                     </div>
                 </div>
                 <div class="col-md-6">

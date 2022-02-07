@@ -5306,7 +5306,6 @@ loadDoc = function loadDoc(url) {
   lastUrl = url;
   setTimeout(function () {
     $('.selectpicker').selectpicker(["reload"]);
-    console.log("after timeout");
   }, 1.0 * 50);
 };
 
@@ -5334,6 +5333,8 @@ showButtons = function showButtons(url, id) {
 hideButtons = function hideButtons(id) {
   document.getElementById(id).style.visibility = "hidden";
 };
+
+warning = function warning(string) {};
 
 /***/ }),
 

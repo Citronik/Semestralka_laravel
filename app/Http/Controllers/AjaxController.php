@@ -32,4 +32,13 @@ class AjaxController extends Controller
         abort(404);
     }
 
+    public function getEditTag($id)
+    {
+        $tag = Tag::find($id);
+        if(view()->exists('content.edit_tag_content')) {
+            return view('content.edit_tag_content', compact('tag'))->render();
+        }
+        abort(404);
+    }
+
 }

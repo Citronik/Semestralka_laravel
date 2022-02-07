@@ -11,9 +11,8 @@
         </button>
         <div class="collapse navbar-collapse" style="justify-content: center; " id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item" style="">
-                    <a class="nav-link" >
-                        <button id="btn-about" onclick="event.preventDefault();
+                <li class="nav-item">
+                    <a class="nav-link"><button id="btn-about" onclick="event.preventDefault();
                         loadDoc('{{ route('ajax.getView', ['id' => 'about_content']) }}');" type="button"
                                                  class="btn btn-primary btn-small btn-nav">About us
                         </button>
